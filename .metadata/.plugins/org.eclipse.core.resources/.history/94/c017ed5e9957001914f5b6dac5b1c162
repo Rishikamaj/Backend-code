@@ -1,0 +1,15 @@
+package com.example.demo.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+
+
+public class LoginRepo {
+	@Repository
+	public interface LoginRepo extends JpaRepository <Login, Integer>{
+
+		Login findByPassword(String password);
+	}
+
+}

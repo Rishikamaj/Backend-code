@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+/home/rishika/Documents/workspace-sts/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+1789839244.index
+1070479661.index
+3110129671.index
+3813963771.index
+2223242433.index
+3539050210.index

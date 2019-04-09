@@ -1,0 +1,46 @@
+package com.newt.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.newt.demo.model.Login;
+import com.newt.demo.repository.LoginRepo;
+@CrossOrigin(origins="*")
+@RestController
+@RequestMapping("/he")
+public class TestController {
+	
+	@Autowired
+	public LoginRepo loginRepo;
+
+	@CrossOrigin(origins="*")
+	@RequestMapping(value = "/getCred", method = RequestMethod.POST)
+	    public String index(@RequestBody Login login) {
+	    	System.out.println("Hello");
+	    	String username = "prati";
+	    	String password = "12345";
+	    	String status = null;
+	    	Login userDetail = loginRepo.findByPassword(login.getPassword());
+	    	System.out.println("Hello "+userDetail);
+	    	if(userDetail != null) {
+	    		if (userDetail.getUsername().equals(login.getUsername())) {
+	    			status = "Login Success";
+	    		}
+	    	} else {
+	    		status = "Login Failed";
+	    	}
+			return status;
+	    	
+	    }
+	    
+	    @RequestMapping("/helloWorld")
+	    public String hello() {
+	    	System.out.println("Hello");
+			return "hello";
+	    }
+
+}

@@ -1,0 +1,33 @@
+package com.newt.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.newt.repository.LoginRepo;
+
+@RestController
+public class TestController {
+	
+	@Autowired	
+	private LoginRepo loginRepo;
+
+	    @RequestMapping("/he")
+	    public String index(String username, Integer password) {
+	    	
+	    	username = "prati";
+	    	password = 12345;
+	    	//String status;
+	    	Login userDetail = loginRepo.findByPassword(password);
+	    	if(userDetail != null) {
+	    		if (userDetail.getUsername().equals(username)) {
+	    			return "Login Success";
+	    		}
+	    	} else {
+	    		return "Login Failed";
+	    	}
+	    	
+	    }
+
+
+}

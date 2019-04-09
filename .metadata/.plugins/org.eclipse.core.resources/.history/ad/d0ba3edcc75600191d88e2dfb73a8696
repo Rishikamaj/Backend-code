@@ -1,0 +1,21 @@
+package com.newt.demo;
+
+public class WebSecurityConfig {
+	@EnableWebSecurity
+	@Configuration
+	public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+	    @Override
+	    protected void configure(HttpSecurity http) throws Exception {
+	        http.cors();
+	    }
+
+	    @Bean
+	    CorsConfigurationSource corsConfigurationSource() {
+	        UrlBasedCorsConfigurationSource source = new
+	                UrlBasedCorsConfigurationSource();
+	        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+	        return source;
+	    }
+	}
+}
